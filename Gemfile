@@ -12,6 +12,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
+  gem 'brakeman'
   gem 'bundler-audit'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
