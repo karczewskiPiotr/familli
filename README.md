@@ -11,6 +11,10 @@ Project is developed with Rails + React using webpacker. Technology versions:
 
 PostgreSQL is used as a development and production database. Testing is done with the use of RSpec.
 
+Figma mockup: https://www.figma.com/proto/x6dnJP1Qwq5FF7eX8jnynv/App-Mockup?node-id=0%3A1&scaling=scale-down
+
+Backlog on Trello: https://trello.com/b/wyqRhBay/familli
+
 ## Workflow
 
 All development is conducted under Gitflow workflow with possibility for slight deviations if needed.
