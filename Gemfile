@@ -42,5 +42,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'devise'
 gem 'haml'
 gem 'haml-rails'
+gem 'rspotify'
 gem 'rubocop', require: false
 gem 'rubocop-rspec'
