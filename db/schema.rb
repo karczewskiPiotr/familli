@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_162736) do
 
   create_table "users", force: :cascade do |t|
     t.string "identity"
-    t.boolean "parent", default: false
+    t.integer "status", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
