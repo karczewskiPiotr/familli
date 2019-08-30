@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:app]
 
-  def index; end
+  def home; end
 
   def app; end
 end
