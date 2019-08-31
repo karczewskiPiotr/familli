@@ -5,16 +5,40 @@ import Message from "../components/message";
 import SignInButton from "../components/sign_in_button";
 import AppMock from "../components/app_mock";
 import Reminders from "../components/features/remiders";
+import Statuses from "../components/features/statuses";
 
 import VisibilitySensor from "react-visibility-sensor/visibility-sensor";
 
 const Home = () => {
-  const [isRemindersVisible, setIsRemindersVisible] = useState(false);
+  const [isRemindersVisible, setIsRemindersVisible] = useState({
+    visibility: false,
+    count: 0
+  });
+  const [isStatusesVisible, setIsStatusesVisible] = useState({
+    visibility: false,
+    count: 0
+  });
 
   const toggleReminders = () => {
-    setIsRemindersVisible(visibility => {
-      return !visibility;
-    });
+    if (isRemindersVisible.count < 3) {
+      setIsRemindersVisible(previous => {
+        return {
+          visibility: !previous.visibility,
+          count: previous.count + 1
+        };
+      });
+    }
+  };
+
+  const toggleStatuses = () => {
+    if (isStatusesVisible.count < 3) {
+      setIsStatusesVisible(previous => {
+        return {
+          visibility: !previous.visibility,
+          count: previous.count + 1
+        };
+      });
+    }
   };
 
   return (
@@ -36,10 +60,14 @@ const Home = () => {
           </Col>
         </Row>
         <AppMock />
-        <VisibilitySensor partialVisibility={true} onChange={toggleReminders}>
+        <VisibilitySensor onChange={toggleReminders}>
           <div>&nbs</div>
         </VisibilitySensor>
-        <Reminders isVisible={isRemindersVisible} />
+        <Reminders isVisible={isRemindersVisible.visibility} />
+        <VisibilitySensor onChange={toggleStatuses}>
+          <div className="divider">&nbs</div>
+        </VisibilitySensor>
+        <Statuses isVisible={isStatusesVisible.visibility} />
       </Container>
     </>
   );

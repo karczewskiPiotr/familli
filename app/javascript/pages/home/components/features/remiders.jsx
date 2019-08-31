@@ -12,7 +12,7 @@ const Reminders = ({ isVisible }) => {
         <Col lg>
           <Fade delay={300} duration={2000}>
             <div className="feature-description-wrapper">
-              <h2 className="header">No hussle remiders!</h2>
+              <h2 className="header">No hussle reminders</h2>
               <p className="description">
                 Remidning members about their overdue payments has never been
                 easier. In Familli you are always one click away from sending
@@ -32,7 +32,11 @@ const Reminders = ({ isVisible }) => {
             </div>
             <Fade right>
               <div className="behind-status">
-                <img src={StatusBehind} alt="Member behind with payments" />
+                <img
+                  src={StatusBehind}
+                  alt="Member behind with payments"
+                  className="behind-status-img"
+                />
               </div>
             </Fade>
           </div>
