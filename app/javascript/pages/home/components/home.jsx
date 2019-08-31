@@ -4,6 +4,7 @@ import Logo from "../components/logo";
 import Message from "../components/message";
 import SignInButton from "../components/sign_in_button";
 import AppMock from "../components/app_mock";
+import Reminders from "../components/features/remiders"
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
           </Col>
         </Row>
         <AppMock />
+        <Reminders />
       </Container>
     </>
   );
