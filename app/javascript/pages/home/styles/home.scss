@@ -1,3 +1,113 @@
-h1 {
-  color: greenyellow;
+@import "../../../helpers/media.scss";
+@import "../../../helpers/animations.scss";
+@import "../../../helpers/variables.scss";
+
+body {
+  background-color: #282828;
+  margin: 0px !important;
+  font-family: $app-font;
+}
+
+.app-graphic-wrapper {
+  margin: auto;
+  overflow: hidden;
+  width: 370px;
+  height: auto;
+  @include mq("medium") {
+    width: 500px;
+  }
+  position: relative;
+  .app-graphic-shadow {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    float: left;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    z-index: 1000;
+    background: linear-gradient(
+      0deg,
+      $bg-grey 9.65%,
+      rgba(40, 40, 40, 0) 34.64%
+    );
+  }
+  .app-graphic {
+    width: inherit;
+    height: inherit;
+  }
+}
+
+.logo-wrapper {
+  width: 100px;
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
+  .logo {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+
+.introduction-wrapper {
+  margin-top: 100px;
+  text-align: center;
+  overflow: hidden;
+  .introduction {
+    color: #b8b8b8;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.85em;
+  }
+}
+.description-wrapper {
+  margin: auto;
+  margin-bottom: 60px;
+  max-width: 400px;
+  @include mq("medium") {
+    max-width: 800px;
+  }
+  text-align: center;
+  overflow: hidden;
+  .description {
+    color: white;
+    font-size: calc(14px + 4.5vw);
+    @include mq("medium") {
+      font-size: 64px;
+    }
+    margin: 0px;
+  }
+}
+.sign-in-button-wrapper {
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+  .sign-in-button {
+    outline: none;
+    min-width: 350px;
+    color: white;
+    border: none;
+    background-color: $spotify-green;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    font-family: $app-font;
+    vertical-align: middle;
+    -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    transform: translateZ(0);
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
 }
