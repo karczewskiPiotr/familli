@@ -1,0 +1,58 @@
+@import "../../../helpers/media.scss";
+@import "../../../helpers/animations.scss";
+@import "../../../helpers/variables.scss";
+@import "../styles/app_mock.scss";
+@import "../styles/sign_in_button.scss";
+@import "../styles/reminders.scss";
+@import "../styles/stauses.scss";
+
+body {
+  background-color: #282828;
+  margin: 0px !important;
+  font-family: $app-font;
+}
+
+.logo-wrapper {
+  width: 100px;
+  margin: auto;
+  text-align: center;
+  overflow: hidden;
+  .logo {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.introduction-wrapper {
+  margin-top: 100px;
+  text-align: center;
+  overflow: hidden;
+  .introduction {
+    color: #b8b8b8;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.85em;
+  }
+}
+.description-wrapper {
+  margin: auto;
+  margin-bottom: 60px;
+  max-width: 400px;
+  @include mq("medium") {
+    max-width: 800px;
+  }
+  text-align: center;
+  overflow: hidden;
+  .description {
+    color: white;
+    font-size: calc(14px + 4.5vw);
+    @include mq("medium") {
+      font-size: 64px;
+    }
+    margin: 0px;
+  }
+}
+
+.divider {
+  margin: 60px;
+}

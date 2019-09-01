@@ -1,5 +1,0 @@
-%h1 Pages#index
-- unless current_user
-  = link_to 'Log in with Spotify', user_spotify_omniauth_authorize_path
-- else
-  = link_to('Log out', destroy_user_session_path, method: :delete)
