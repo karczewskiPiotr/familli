@@ -1,0 +1,31 @@
+.app-graphic-wrapper {
+  margin: auto;
+  overflow: hidden;
+  width: 370px;
+  height: auto;
+  @include mq("medium") {
+    width: 500px;
+  }
+  position: relative;
+  .app-graphic-shadow {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+    float: left;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    z-index: 1000;
+    background: linear-gradient(
+      0deg,
+      $bg-grey 9.65%,
+      rgba(40, 40, 40, 0) 34.64%
+    );
+  }
+  .app-graphic {
+    width: inherit;
+    height: inherit;
+  }
+}

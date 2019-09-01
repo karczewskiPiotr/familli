@@ -1,43 +1,15 @@
 @import "../../../helpers/media.scss";
 @import "../../../helpers/animations.scss";
 @import "../../../helpers/variables.scss";
+@import "../styles/app_mock.scss";
+@import "../styles/sign_in_button.scss";
+@import "../styles/reminders.scss";
+@import "../styles/stauses.scss";
 
 body {
   background-color: #282828;
   margin: 0px !important;
   font-family: $app-font;
-}
-
-.app-graphic-wrapper {
-  margin: auto;
-  overflow: hidden;
-  width: 370px;
-  height: auto;
-  @include mq("medium") {
-    width: 500px;
-  }
-  position: relative;
-  .app-graphic-shadow {
-    width: inherit;
-    height: inherit;
-    overflow: hidden;
-    float: left;
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
-    z-index: 1000;
-    background: linear-gradient(
-      0deg,
-      $bg-grey 9.65%,
-      rgba(40, 40, 40, 0) 34.64%
-    );
-  }
-  .app-graphic {
-    width: inherit;
-    height: inherit;
-  }
 }
 
 .logo-wrapper {
@@ -80,171 +52,7 @@ body {
     margin: 0px;
   }
 }
-.sign-in-button-wrapper {
-  padding: 20px;
-  text-align: center;
-  overflow: hidden;
-  margin-bottom: 20px;
-  .sign-in-button {
-    outline: none;
-    min-width: 350px;
-    color: white;
-    border: none;
-    background-color: $spotify-green;
-    border-radius: 25px;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
-    vertical-align: middle;
-    -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-    -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-    transform: translateZ(0);
-    -moz-osx-font-smoothing: grayscale;
-    transition-duration: 0.3s;
-    transition-property: transform;
-    &:hover {
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-  }
-}
-
-.reminders {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  .feature-description-wrapper {
-    max-width: 500px;
-    margin: auto;
-    @include mq("large") {
-      margin: 0px 0px 0px auto;
-    }
-    .header {
-      color: white;
-      font-size: 35px;
-      font-weight: 900;
-      margin: 0px 0px 5px 0px;
-      text-align: center;
-      @include mq("large") {
-        text-align: start;
-      }
-    }
-    .description {
-      font-size: 16px;
-      font-weight: 500;
-      margin: 0px;
-      color: #b8b8b8;
-      text-align: center;
-      @include mq("large") {
-        text-align: start;
-      }
-    }
-  }
-  .behind-status-wrapper {
-    display: table;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    height: 100%;
-    transform: translateX(-50%);
-    margin: 35px 0;
-    @include mq("large") {
-      margin: 0px 0px;
-      padding-left: 50px;
-      left: 0;
-      transform: translateX(0);
-    }
-    .notification-bell {
-      transform: scale(1.1);
-      float: right;
-      position: absolute;
-      right: 0%;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 1000;
-    }
-    .behind-status {
-      display: table-cell;
-      vertical-align: middle;
-      .behind-status-img {
-        transform: scale(1.1);
-        border-radius: 23px;
-        -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-        -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-      }
-    }
-  }
-}
 
 .divider {
   margin: 60px;
-}
-
-.statuses {
-  .statuses-wrapper {
-    transform: scale(1.1);
-    position: relative;
-    width: fit-content;
-    margin: auto;
-    .square {
-      overflow: hidden;
-      float: right;
-      top: 50%;
-      right: 0%;
-      transform: translateY(-50%);
-      position: absolute;
-      z-index: 1000;
-      margin: auto;
-      @include mq("large") {
-        margin: 0px 0px 0px auto;
-      }
-      background-color: #222222;
-      border-radius: 25px;
-      -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-      -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-      box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
-      height: 257px;
-      width: 257px;
-      .statuses-img {
-        transform: scale(0.85);
-      }
-    }
-    .circle {
-      margin: 0px 0px 0px auto;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background-color: $spotify-green;
-    }
-  }
-  .feature-description-wrapper {
-    max-width: 500px;
-    margin: auto;
-    margin-bottom: 50px;
-    margin-top: 100px;
-    @include mq("large") {
-      margin: 0px;
-    }
-    .header {
-      color: white;
-      font-size: 35px;
-      font-weight: 900;
-      margin: 0px 0px 5px 0px;
-      text-align: center;
-      @include mq("large") {
-        text-align: start;
-      }
-    }
-    .description {
-      font-size: 16px;
-      font-weight: 500;
-      margin: 0px;
-      color: #b8b8b8;
-      text-align: center;
-      @include mq("large") {
-        text-align: start;
-      }
-    }
-  }
 }

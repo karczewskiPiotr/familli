@@ -6,38 +6,36 @@ import SignInButton from "../components/sign_in_button";
 import AppMock from "../components/app_mock";
 import Reminders from "../components/features/remiders";
 import Statuses from "../components/features/statuses";
-
 import VisibilitySensor from "react-visibility-sensor/visibility-sensor";
 
 const Home = () => {
-  const [isRemindersVisible, setIsRemindersVisible] = useState({
+  const [remindersVisibility, setRemindersVisibility] = useState({
     visibility: false,
     count: 0
   });
-  const [isStatusesVisible, setIsStatusesVisible] = useState({
+  const [statusesVisibility, setStatusesVisibility] = useState({
     visibility: false,
     count: 0
   });
 
+  const toggleVisibility = setState => {
+    setState(previous => {
+      return {
+        visibility: !previous.visibility,
+        count: previous.count + 1
+      };
+    });
+  };
+
   const toggleReminders = () => {
-    if (isRemindersVisible.count < 3) {
-      setIsRemindersVisible(previous => {
-        return {
-          visibility: !previous.visibility,
-          count: previous.count + 1
-        };
-      });
+    if (remindersVisibility.count < 3) {
+      toggleVisibility(setRemindersVisibility);
     }
   };
 
   const toggleStatuses = () => {
-    if (isStatusesVisible.count < 3) {
-      setIsStatusesVisible(previous => {
-        return {
-          visibility: !previous.visibility,
-          count: previous.count + 1
-        };
-      });
+    if (statusesVisibility.count < 3) {
+      toggleVisibility(setStatusesVisibility);
     }
   };
 
@@ -63,11 +61,11 @@ const Home = () => {
         <VisibilitySensor onChange={toggleReminders}>
           <div>&nbs</div>
         </VisibilitySensor>
-        <Reminders isVisible={isRemindersVisible.visibility} />
+        <Reminders isVisible={remindersVisibility.visibility} />
         <VisibilitySensor onChange={toggleStatuses}>
           <div className="divider">&nbs</div>
         </VisibilitySensor>
-        <Statuses isVisible={isStatusesVisible.visibility} />
+        <Statuses isVisible={statusesVisibility.visibility} />
       </Container>
     </>
   );

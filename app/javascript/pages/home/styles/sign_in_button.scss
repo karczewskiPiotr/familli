@@ -1,0 +1,29 @@
+.sign-in-button-wrapper {
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+  .sign-in-button {
+    outline: none;
+    min-width: 350px;
+    color: white;
+    border: none;
+    background-color: $spotify-green;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px;
+    vertical-align: middle;
+    -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    transform: translateZ(0);
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}
