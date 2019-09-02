@@ -1,10 +1,11 @@
 @import "../../../helpers/media.scss";
 @import "../../../helpers/animations.scss";
 @import "../../../helpers/variables.scss";
-@import "../styles/app_mock.scss";
-@import "../styles/sign_in_button.scss";
-@import "../styles/reminders.scss";
-@import "../styles/stauses.scss";
+@import "./app_mock.scss";
+@import "./sign_in_button.scss";
+@import "./reminders.scss";
+@import "./stauses.scss";
+@import "./footer.scss";
 
 body {
   background-color: #282828;

@@ -5,7 +5,7 @@ const VisibilityTracker = ({ children }) => {
   const [state, setState] = useState({ visible: false, reference: 0 });
 
   const handleChange = () => {
-    if (state.reference == 2) {
+    if (state.reference === 1 || state.reference === 2) {
       setState({
         visible: true,
         reference: 3
