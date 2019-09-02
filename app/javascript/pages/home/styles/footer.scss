@@ -1,0 +1,13 @@
+.footer {
+  margin: 100px auto 10px auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8em;
+  a {
+    color: #b8b8b8;
+    text-decoration: none;
+    &:hover {
+      color: $spotify-green;
+    }
+  }
+  }
