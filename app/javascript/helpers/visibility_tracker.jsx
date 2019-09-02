@@ -18,6 +18,8 @@ const VisibilityTracker = ({ children }) => {
         };
       });
     }
+    console.log(state);
+    
   };
 
   return (
