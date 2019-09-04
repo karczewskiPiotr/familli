@@ -5,6 +5,7 @@ import PaymentHistory from "./payment_history/payment_history";
 import Statistics from "./statistics/statistics";
 import Hub from "./hub/hub";
 import NoMatch from "./no_match";
+import { NavbarWithRouter } from "./navbar";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route component={NoMatch} />
         </Switch>
       </div>
+      <NavbarWithRouter />
     </>
   );
 };
