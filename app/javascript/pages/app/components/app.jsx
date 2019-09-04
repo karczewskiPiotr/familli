@@ -4,6 +4,7 @@ import Profile from "./profile/profile";
 import PaymentHistory from "./payment_history/payment_history";
 import Statistics from "./statistics/statistics";
 import Hub from "./hub/hub";
+import NoMatch from "./no_match";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route exact path="/app/payment_history" component={PaymentHistory} />
           <Route exact path="/app/statistics" component={Statistics} />
           <Route exact path="/app/profile" component={Profile} />
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </>
