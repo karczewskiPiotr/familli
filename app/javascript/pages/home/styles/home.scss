@@ -1,6 +1,7 @@
 @import "../../../helpers/media.scss";
 @import "../../../helpers/animations.scss";
 @import "../../../helpers/variables.scss";
+@import "../../helpers/alerts.scss";
 @import "./app_mock.scss";
 @import "./sign_in_button.scss";
 @import "./reminders.scss";
@@ -10,6 +11,7 @@
 body {
   background-color: #282828;
   margin: 0px !important;
+  padding-top: 40px;
   font-family: $app-font;
 }
 

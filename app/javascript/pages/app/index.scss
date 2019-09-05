@@ -1,0 +1,12 @@
+@import "../../helpers/variables.scss";
+@import "../../helpers/media.scss";
+@import "../../helpers/alerts.scss";
+@import "./styles/navbar.scss";
+@import "./styles/tab.scss";
+
+body {
+  font-family: $app-font;
+  background-color: $bg-grey;
+  color: white;
+  padding-top: 30px;
+}
