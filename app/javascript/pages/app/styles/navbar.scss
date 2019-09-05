@@ -1,0 +1,31 @@
+.navbar-wrapper {
+  @include mq("medium") {
+    display: none;
+  }
+  background-color: #1e1e1e;
+  border-radius: 25px 25px 0px 0px;
+  -moz-border-radius: 25px 25px 0px 0px;
+  -webkit-border-radius: 25px 25px 0px 0px;
+  box-shadow: 0px 0px 100px 50px rgba(0, 0, 0, 0.75);
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-evenly;
+  .link-wrapper {
+    &.inactive {
+      .link {
+        color: #b8b8b8;
+      }
+    }
+    &.active {
+      border-bottom: 2px solid $spotify-green;
+      .link {
+        color: white;
+      }
+    }
+    .link {
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+}
