@@ -4,9 +4,7 @@ import Tab from "../tab";
 const Hub = () => {
   return (
     <Tab>
-      <div style={{backgroundColor: 'red', height: '100vh'}}>
-        <h1>Hub</h1>
-      </div>
+      <h1>Hub</h1>
     </Tab>
   );
 };
