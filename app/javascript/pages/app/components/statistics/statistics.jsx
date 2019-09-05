@@ -1,7 +1,12 @@
 import React from "react";
+import Tab from "../tab";
 
 const Statistics = () => {
-  return <h1>Statistics</h1>;
+  return (
+    <Tab>
+      <h1>Statistics</h1>
+    </Tab>
+  );
 };
 
 export default Statistics;

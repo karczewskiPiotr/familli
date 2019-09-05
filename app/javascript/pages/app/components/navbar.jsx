@@ -33,4 +33,4 @@ const Navbar = ({ location }) => {
   );
 };
 
-export const NavbarWithRouter = withRouter(Navbar);
+export default withRouter(Navbar);
