@@ -1,25 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import Tab from "../tab";
 
-const Profile = () => {
-  const [user, setUser] = useState({});
-
-  const fetchUserData = () => {
-    axios.get("/api/v1/users/current").then(response => {
-      const data = response.data.data;
-
-      setUser({
-        identity: data.identity,
-        email: data.email,
-        status: data.status,
-        profile_image: data.profile_image
-      });
-    });
-  };
-
-  useEffect(fetchUserData, []);
-
+const Profile = ({ user }) => {
   return (
     <Tab>
       <div className="profile-wrapper">
