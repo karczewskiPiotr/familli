@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   describe 'attributes' do
     subject(:user) { described_class.new }
 
-    it { expect(user.attributes).to include('identity', 'email', 'status') }
+    it { expect(user.attributes).to include('identity', 'email', 'status', 'profile_image') }
   end
 
   describe 'validation' do

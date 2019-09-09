@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+  
   root to: 'pages#home'
+  
   get '/app', to: 'pages#app'
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+     get 'users/current', to: 'users#current'
+    end
+  end
+  
   match '/app/*path', to: 'pages#app', via: :all
 end
