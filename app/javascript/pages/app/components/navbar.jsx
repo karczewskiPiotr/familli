@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import LogoImg from "../../home/images/logo.svg"
 
 const Navbar = ({ location }) => {
   const getLinkWrapperClassFor = path => {
@@ -8,7 +9,7 @@ const Navbar = ({ location }) => {
   };
 
   return (
-    <div className="navbar-wrapper fixed-bottom">
+    <div className="navbar-wrapper">
       <div className={getLinkWrapperClassFor("/app")}>
         <Link to="/app" className="link">
           Hub
@@ -18,6 +19,9 @@ const Navbar = ({ location }) => {
         <Link to="/app/payment_history" className="link">
           Payment History
         </Link>
+      </div>
+      <div className="logo">
+        <img src={LogoImg} alt="Familli logo." className="logo" />
       </div>
       <div className={getLinkWrapperClassFor("/app/statistics")}>
         <Link to="/app/statistics" className="link">

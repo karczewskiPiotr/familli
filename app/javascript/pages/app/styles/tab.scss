@@ -1,8 +1,10 @@
 .tab {
   position: absolute;
   width: 100%;
-  height: 100vh;
-  -webkit-overflow-scrolling: touch;
+  height: calc(100vh - 100px);
+  @include mq("medium") {
+    margin-top: 70px;
+  }
 }
 
 .tab-enter {

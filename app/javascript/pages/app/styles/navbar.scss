@@ -1,7 +1,8 @@
 .navbar-wrapper {
-  @include mq("medium") {
-    display: none;
-  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #1e1e1e;
   border-radius: 25px 25px 0px 0px;
   -moz-border-radius: 25px 25px 0px 0px;
@@ -9,8 +10,10 @@
   box-shadow: 0px 0px 100px 50px rgba(0, 0, 0, 0.75);
   padding: 20px 0px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-evenly;  -webkit-overflow-scrolling: touch;
+
   .link-wrapper {
+    height: fit-content;
     &.inactive {
       .link {
         color: #b8b8b8;
@@ -26,6 +29,23 @@
       font-size: 16px;
       font-weight: bold;
       text-decoration: none;
+    }
+  }
+  .logo {
+    display: none;
+  }
+  @include mq("medium") {
+    position: fixed;
+    top: 30;
+    padding-right: 30%;
+    padding-left: 30%;
+    bottom: auto;
+    background-color: transparent;
+    box-shadow: none;
+    .logo {
+      display: block;
+      height: 32px;
+      width: auto;
     }
   }
 }
