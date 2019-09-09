@@ -1,8 +1,10 @@
 @import "../../helpers/variables.scss";
 @import "../../helpers/media.scss";
 @import "../../helpers/alerts.scss";
+@import "../../helpers/animations.scss";
 @import "./styles/navbar.scss";
 @import "./styles/tab.scss";
+@import "./styles/profile.scss";
 
 body {
   font-family: $app-font;
