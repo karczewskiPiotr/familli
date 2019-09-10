@@ -9,5 +9,4 @@ RSpec.describe Invitation, type: :model do
   describe 'enum' do
     it { is_expected.to define_enum_for(:status) }
   end
-  
 end

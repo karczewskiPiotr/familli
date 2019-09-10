@@ -39,7 +39,7 @@ end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'haml'
 gem 'haml-rails'
 gem 'rspotify'

@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
 
     before { invitation.accepted! }
 
-    it 'should return accepted familly' do
+    it 'returns accepted familly' do
       expect(invitation.user.familly).to eq(invitation.familly)
     end
   end
