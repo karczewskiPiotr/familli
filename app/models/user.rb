@@ -11,7 +11,7 @@ class User < ApplicationRecord
   enum status: %i[member owner]
 
   def familly
-    Invitation.where(status: :accepted, user_id: id).first.familly
+    Invitation.where(status: :accepted, user_id: id).first&.familly
   end
 
   # :nocov:
