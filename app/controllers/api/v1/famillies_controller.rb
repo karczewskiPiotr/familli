@@ -1,10 +1,10 @@
 class Api::V1::FamilliesController < ApiController
   def create
     @familly = current_user.famillies.build(familly_params)
-    if @familly.save
-      Invitation.create(user_id: current_user.id, familly_id: @familly.id, status: :accepted)
-      current_user.owner!
-    end
+    return unless @familly.save
+
+    Invitation.create(user_id: current_user.id, familly_id: @familly.id, status: :accepted)
+    current_user.owner!
   end
 
   private

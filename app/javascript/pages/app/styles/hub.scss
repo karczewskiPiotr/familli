@@ -1,0 +1,22 @@
+.start-familly-btn-wrapper {
+  position: fixed;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  text-align: center;
+  .start-familly-btn {
+    outline: none;
+    border: none;
+    min-width: 300px;
+    color: white;
+    background-color: $spotify-green;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px;
+    -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+  }
+}
