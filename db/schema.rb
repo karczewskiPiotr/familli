@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_131228) do
+ActiveRecord::Schema.define(version: 2019_09_10_151315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "famillies", force: :cascade do |t|
+    t.float "subscription_fee"
+    t.date "renewal_date"
+    t.string "currency"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "familly_id"
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["familly_id"], name: "index_invitations_on_familly_id"
+    t.index ["user_id"], name: "index_invitations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "identity"

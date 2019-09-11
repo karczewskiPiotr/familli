@@ -3,9 +3,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:spotify]
 
+  has_many :invitations
+  has_many :famillies, through: :invitations
+
   validates :identity, presence: true
 
   enum status: %i[member owner]
+
+  def familly
+    Invitation.where(status: :accepted, user_id: id).first.familly
+  end
 
   # :nocov:
   def self.from_omniauth(auth)

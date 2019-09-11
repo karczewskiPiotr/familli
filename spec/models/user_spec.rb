@@ -12,7 +12,22 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:identity) }
   end
 
+  describe 'relations' do
+    it { is_expected.to have_many(:invitations) }
+    it { is_expected.to have_many(:famillies).through(:invitations) }
+  end
+
   describe 'enum' do
     it { is_expected.to define_enum_for(:status) }
+  end
+
+  describe 'methods' do
+    let(:invitation) { create(:invitation) }
+
+    before { invitation.accepted! }
+
+    it 'returns accepted familly' do
+      expect(invitation.user.familly).to eq(invitation.familly)
+    end
   end
 end
