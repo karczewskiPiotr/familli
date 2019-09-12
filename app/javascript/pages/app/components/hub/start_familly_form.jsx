@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Fade from "react-reveal/Fade";
 
 const StartFamillyForm = ({ setVisibility }) => {
   const [formData, setFormData] = useState({
@@ -11,10 +12,12 @@ const StartFamillyForm = ({ setVisibility }) => {
   });
 
   const [formValidity, setFormValidity] = useState({
-    subscription_fee: false,
-    currency: false,
-    renewal_day: false
+    subscription_fee: true,
+    currency: true,
+    renewal_day: true
   });
+
+  const [changes, setChanges] = useState(false)
 
   const closePopUp = () => {
     setVisibility(false);
@@ -22,6 +25,7 @@ const StartFamillyForm = ({ setVisibility }) => {
 
   const handleSubscriptionChange = () => {
     const value = document.getElementById("subscription-fee").value;
+    setChanges(true)
     if (value > 0) {
       setFormValidity(previous => {
         return {
@@ -47,6 +51,7 @@ const StartFamillyForm = ({ setVisibility }) => {
 
   const handleCurrencyChange = () => {
     const value = document.getElementById("currency").value;
+    setChanges(true)
     if (value != "") {
       setFormValidity(previous => {
         return {
@@ -72,6 +77,7 @@ const StartFamillyForm = ({ setVisibility }) => {
 
   const handleRenewalDayChange = () => {
     const value = document.getElementById("renewal-day").value;
+    setChanges(true)
     if (value > 0 && value <= 28) {
       setFormValidity(previous => {
         return {
@@ -117,6 +123,7 @@ const StartFamillyForm = ({ setVisibility }) => {
     }
   };
 
+
   return (
     <>
       <form className="form">
@@ -127,6 +134,9 @@ const StartFamillyForm = ({ setVisibility }) => {
           type="number"
           onChange={handleSubscriptionChange}
         />
+        <Fade when={!formValidity.subscription_fee && changes} collapse>
+          <div className="input-error">Value should be greater than 0.</div>
+        </Fade>
         <h6 className="label">Currency</h6>
         <input
           type="text"
@@ -134,6 +144,9 @@ const StartFamillyForm = ({ setVisibility }) => {
           id="currency"
           onChange={handleCurrencyChange}
         />
+        <Fade when={!formValidity.currency && changes} collapse>
+          <div className="input-error">Value can't be blank.</div>
+        </Fade>
         <h6 className="label">Renewal day</h6>
         <input
           id="renewal-day"
@@ -142,6 +155,9 @@ const StartFamillyForm = ({ setVisibility }) => {
           placeholder="1 - 28"
           onChange={handleRenewalDayChange}
         />
+        <Fade when={!formValidity.renewal_day && changes} collapse>
+          <div className="input-error">Value must be between 1 and 28.</div>
+        </Fade>
       </form>
       <div className="create-btn-wrapper">
         <button className="create-btn" onClick={handleCreate}>
