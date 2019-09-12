@@ -15,8 +15,7 @@ const App = () => {
   const fetchUserData = () => {
     axios.get("/api/v1/users/current").then(response => {
       const data = response.data.data;
-      console.log("hello");
-      
+
       setUser({
         identity: data.identity,
         email: data.email,

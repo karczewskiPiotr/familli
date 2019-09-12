@@ -7,11 +7,11 @@
   z-index: 1002;
   background-color: rgba(30, 30, 30, 0.78);
   .pop-up {
+    // display: flex;
     position: absolute;
     bottom: 20px;
-    right: 20px;
     left: 20px;
-    width: 90%;
+    right: 20px;
     background-color: white;
     border-radius: 25px;
     padding: 5px;
@@ -20,6 +20,7 @@
       width: 100%;
       text-align: right;
       padding: 10px 10px 0px 0px;
+      margin-bottom: 10px;
       .close-btn {
         padding: 0;
         background: transparent;
@@ -30,6 +31,46 @@
     .form-wrapper {
       text-align: center;
       color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .form {
+        text-align: left;
+        padding-left: 20px;
+        padding-right: 20px;
+        .label {
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+        .input-field {
+          width: 100%;
+          background-color: rgba(196, 196, 196, 0.41);
+          border: none;
+          border-radius: 25px;
+          outline: none;
+          padding-left: 10px;
+          margin-bottom: 15px;
+        }
+      }
+      .create-btn-wrapper {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        .create-btn {
+          outline: none;
+          border: none;
+          min-width: 300px;
+          color: white;
+          background-color: $spotify-green;
+          border-radius: 25px;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 5px;
+          -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+          -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+          box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+        }
+      }
     }
   }
 }

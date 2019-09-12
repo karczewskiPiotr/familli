@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Tab from "../tab";
 import Fade from "react-reveal/Fade";
 import PopUp from "../pop_up";
+import StartFamillyForm from "./start_familly_form";
 
 const Hub = () => {
-  const [popUpVisibility, setPopUpVisibility] = useState(false );
+  const [popUpVisibility, setPopUpVisibility] = useState(false);
 
   const handleStartFamilly = () => {
     setPopUpVisibility(true);
@@ -23,7 +24,7 @@ const Hub = () => {
         </Fade>
       </Tab>
       <PopUp visibility={popUpVisibility} setVisibility={setPopUpVisibility}>
-        <div>hello</div>
+        <StartFamillyForm setVisibility={setPopUpVisibility}/>
       </PopUp>
     </>
   );
