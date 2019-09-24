@@ -28,6 +28,13 @@ const App = () => {
 
   useEffect(fetchUserData, []);
 
+  const isUserOwner = () => {
+    if (user.status === "owner") {
+      return true;
+    }
+    return false;
+  };
+
   return (
     !user.loading && (
       <>
@@ -42,7 +49,11 @@ const App = () => {
                     timeout={{ enter: 600, exit: 300 }}
                   >
                     <Switch location={location}>
-                      <Route exact path="/app" component={Hub} />
+                      <Route
+                        exact
+                        path="/app"
+                        render={() => <Hub isUserOwner={isUserOwner} />}
+                      />
                       <Route
                         exact
                         path="/app/payment_history"
