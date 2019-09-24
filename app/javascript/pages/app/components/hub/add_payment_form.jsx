@@ -1,13 +1,14 @@
 import React from "react";
 import Select from "react-select";
 
-const AddPaymentForm = () => {
-  const options = [
-    { value: "test", label: "test" },
-    { value: "test", label: "test" },
-    { value: "test", label: "test" },
-    { value: "test", label: "test" }
-  ];
+const AddPaymentForm = ({ members }) => {
+  const options = members.map(member => {
+    return { value: member.identity, label: member.identity };
+  });
+
+  const test = () => {
+    console.log(members);
+  };
 
   return (
     <>
@@ -15,10 +16,12 @@ const AddPaymentForm = () => {
         <h6 className="label">Payment amount</h6>
         <input className="input-field" id="payment-amount" type="number" />
         <h6 className="label">Member</h6>
-        <Select options={options} menuPlacement="top" />
+        <Select menuPlacement="top" options={options} />
       </form>
       <div className="create-btn-wrapper">
-        <button className="create-btn">Create</button>
+        <button className="create-btn" onClick={test}>
+          Create
+        </button>
       </div>
     </>
   );

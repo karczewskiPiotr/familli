@@ -5,7 +5,7 @@ import PopUp from "../pop_up";
 import StartFamillyForm from "./start_familly_form";
 import AddPaymentForm from "./add_payment_form";
 
-const Hub = ({ isUserOwner, fetchUserData }) => {
+const Hub = ({ isUserOwner, fetchUserData, members }) => {
   const [popUpVisibility, setPopUpVisibility] = useState(false);
 
   const handleOnClick = () => {
@@ -16,19 +16,24 @@ const Hub = ({ isUserOwner, fetchUserData }) => {
     <>
       <Tab>
         <h1>Hub</h1>
-        <Fade top distance="10px" delay={600}>
-          <div className="action-btn-wrapper">
-            <button className="action-btn" onClick={handleOnClick}>
-              {isUserOwner() ? "Add payment" : "Start a familly"}
-            </button>
+        {members.length > 0 && (
+          <div top distance="10px" delay={600}>
+            <div className="action-btn-wrapper">
+              <button className="action-btn" onClick={handleOnClick}>
+                {isUserOwner() ? "Add payment" : "Start a familly"}
+              </button>
+            </div>
           </div>
-        </Fade>
+        )}
       </Tab>
       <PopUp visibility={popUpVisibility} setVisibility={setPopUpVisibility}>
         {isUserOwner() ? (
-          <AddPaymentForm />
+          <AddPaymentForm members={members} />
         ) : (
-          <StartFamillyForm setVisibility={setPopUpVisibility} fetchUserData={fetchUserData} />
+          <StartFamillyForm
+            setVisibility={setPopUpVisibility}
+            fetchUserData={fetchUserData}
+          />
         )}
       </PopUp>
     </>

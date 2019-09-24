@@ -12,6 +12,8 @@ import axios from "axios";
 const App = () => {
   const [user, setUser] = useState({ loading: true });
 
+  const [members, setMembers] = useState({ data: [], loading: true });
+
   const fetchUserData = () => {
     axios.get("/api/v1/users/current").then(response => {
       const data = response.data.data;
@@ -26,7 +28,15 @@ const App = () => {
     });
   };
 
+  const fetchMembersData = () => {
+    axios.get("/api/v1/famillies/members").then(response => {
+      setMembers({ data: response.data.data, loading: false });
+    });
+  };
+
   useEffect(fetchUserData, []);
+
+  useEffect(fetchMembersData, []);
 
   const isUserOwner = () => {
     if (user.status === "owner") {
@@ -36,7 +46,7 @@ const App = () => {
   };
 
   return (
-    !user.loading && (
+    !user.loading && !members.loading && (
       <>
         <div>
           <Route
@@ -56,6 +66,7 @@ const App = () => {
                           <Hub
                             isUserOwner={isUserOwner}
                             fetchUserData={fetchUserData}
+                            members={members.data}
                           />
                         )}
                       />

@@ -7,6 +7,10 @@ class Api::V1::FamilliesController < ApiController
     current_user.owner!
   end
 
+  def members
+    @members = current_user.familly.members.where(status: :member)
+  end
+
   private
 
   def familly_params
