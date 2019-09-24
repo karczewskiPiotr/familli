@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Fade from "react-reveal/Fade";
 
-const StartFamillyForm = ({ setVisibility }) => {
+const StartFamillyForm = ({ setVisibility, fetchUserData }) => {
   const [formData, setFormData] = useState({
     familly: {
       subscription_fee: 0,
@@ -17,7 +17,7 @@ const StartFamillyForm = ({ setVisibility }) => {
     renewal_day: true
   });
 
-  const [changes, setChanges] = useState(false)
+  const [changes, setChanges] = useState(false);
 
   const closePopUp = () => {
     setVisibility(false);
@@ -25,7 +25,7 @@ const StartFamillyForm = ({ setVisibility }) => {
 
   const handleSubscriptionChange = () => {
     const value = document.getElementById("subscription-fee").value;
-    setChanges(true)
+    setChanges(true);
     if (value > 0) {
       setFormValidity(previous => {
         return {
@@ -51,7 +51,7 @@ const StartFamillyForm = ({ setVisibility }) => {
 
   const handleCurrencyChange = () => {
     const value = document.getElementById("currency").value;
-    setChanges(true)
+    setChanges(true);
     if (value != "") {
       setFormValidity(previous => {
         return {
@@ -77,7 +77,7 @@ const StartFamillyForm = ({ setVisibility }) => {
 
   const handleRenewalDayChange = () => {
     const value = document.getElementById("renewal-day").value;
-    setChanges(true)
+    setChanges(true);
     if (value > 0 && value <= 28) {
       setFormValidity(previous => {
         return {
@@ -119,10 +119,12 @@ const StartFamillyForm = ({ setVisibility }) => {
             renewal_date: `2019-09-${formData.renewal_day}`
           }
         })
-        .then(closePopUp);
+        .then(() => {
+          closePopUp();
+          fetchUserData();
+        });
     }
   };
-
 
   return (
     <>

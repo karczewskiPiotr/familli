@@ -52,7 +52,12 @@ const App = () => {
                       <Route
                         exact
                         path="/app"
-                        render={() => <Hub isUserOwner={isUserOwner} />}
+                        render={() => (
+                          <Hub
+                            isUserOwner={isUserOwner}
+                            fetchUserData={fetchUserData}
+                          />
+                        )}
                       />
                       <Route
                         exact

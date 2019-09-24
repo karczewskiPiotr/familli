@@ -5,7 +5,7 @@ import PopUp from "../pop_up";
 import StartFamillyForm from "./start_familly_form";
 import AddPaymentForm from "./add_payment_form";
 
-const Hub = ({ isUserOwner }) => {
+const Hub = ({ isUserOwner, fetchUserData }) => {
   const [popUpVisibility, setPopUpVisibility] = useState(false);
 
   const handleOnClick = () => {
@@ -28,7 +28,7 @@ const Hub = ({ isUserOwner }) => {
         {isUserOwner() ? (
           <AddPaymentForm />
         ) : (
-          <StartFamillyForm setVisibility={setPopUpVisibility} />
+          <StartFamillyForm setVisibility={setPopUpVisibility} fetchUserData={fetchUserData} />
         )}
       </PopUp>
     </>
