@@ -8,7 +8,7 @@ class Api::V1::FamilliesController < ApiController
   end
 
   def members
-    @members = current_user.familly.members.where(status: :member)
+    @members = current_user.familly.members.where(status: :member).includes(:invitations)
   end
 
   private

@@ -6,7 +6,13 @@ RSpec.describe '/api/v1/famillies/members', type: :view do
 
   before do
     sign_in(user)
-    @members = members
+    familly = user.famillies.build(attributes_for(:familly))
+    familly.save
+    Invitation.create(user_id: user.id, familly_id: familly.id, status: :accepted)
+    user.owner!
+    @members = members.each do |member|
+      member.invitations.build(familly_id: familly.id).save
+    end
     render template: '/api/v1/famillies/members'
   end
 
@@ -16,7 +22,7 @@ RSpec.describe '/api/v1/famillies/members', type: :view do
     it { expect(data.length).to eq(3) }
     it 'attributes' do
       data.each do |member|
-        expect(member.keys).to match_array(%w[identity email status profile_image])
+        expect(member.keys).to match_array(%w[identity email status profile_image invitation])
       end
     end
   end

@@ -12,18 +12,22 @@ const Hub = ({ isUserOwner, fetchUserData, members }) => {
     setPopUpVisibility(true);
   };
 
+  const validMembers = () => {
+    return members.some(member => member.invitation === "accepted");
+  };
+
   return (
     <>
       <Tab>
         <h1>Hub</h1>
-        {members.length > 0 && (
-          <div top distance="10px" delay={600}>
+        {members.length > 0 && validMembers() && (
+          <Fade top distance="10px" delay={600}>
             <div className="action-btn-wrapper">
               <button className="action-btn" onClick={handleOnClick}>
                 {isUserOwner() ? "Add payment" : "Start a familly"}
               </button>
             </div>
-          </div>
+          </Fade>
         )}
       </Tab>
       <PopUp visibility={popUpVisibility} setVisibility={setPopUpVisibility}>
