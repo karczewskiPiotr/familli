@@ -21,7 +21,7 @@ Metrics/ClassLength:
   Enabled:                             false
 Style/Documentation:
   Enabled:                             false
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle:                       with_fixed_indentation
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle:                       indented
