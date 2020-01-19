@@ -13,10 +13,12 @@ RSpec.describe Api::V1::FamilliesController, type: :controller do
       subject(:api_call) { post :create, params: valid_attributes }
 
       it { expect { api_call }.to change(Familly, :count).by(1) }
+
       it 'makes user owner of the created familly' do
         api_call
         expect(user.reload.owner?).to eq(true)
       end
+
       it 'makes invite to the familly accepted' do
         api_call
         expect(user.reload.familly).to eq(assigns(:familly))

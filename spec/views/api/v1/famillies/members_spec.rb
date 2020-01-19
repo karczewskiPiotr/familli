@@ -20,6 +20,7 @@ RSpec.describe '/api/v1/famillies/members', type: :view do
     subject(:data) { JSON.parse(response)['data'] }
 
     it { expect(data.length).to eq(3) }
+
     it 'attributes' do
       data.each do |member|
         expect(member.keys).to match_array(%w[identity email status profile_image invitation])
