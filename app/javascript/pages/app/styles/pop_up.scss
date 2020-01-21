@@ -60,6 +60,7 @@
         .create-btn {
           &:disabled {
             background-color: rgba(196, 196, 196, 0.41);
+            color: grey;
           }
           outline: none;
           border: none;

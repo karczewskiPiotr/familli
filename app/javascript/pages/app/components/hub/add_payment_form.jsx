@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 
 const AddPaymentForm = ({ members }) => {
@@ -10,6 +10,10 @@ const AddPaymentForm = ({ members }) => {
     console.log(members);
   };
 
+  const validMembers = () => {
+    return members.some(member => member.invitation === "accepted");
+  };
+
   return (
     <>
       <form className="form">
@@ -19,7 +23,7 @@ const AddPaymentForm = ({ members }) => {
         <Select menuPlacement="top" options={options} />
       </form>
       <div className="create-btn-wrapper">
-        <button className="create-btn" onClick={test}>
+        <button className="create-btn" onClick={test} disabled={!validMembers()}>
           Create
         </button>
       </div>
