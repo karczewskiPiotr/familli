@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe '/api/v1/users/current', type: :view do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
 
   before do
     sign_in(user)
@@ -12,7 +12,8 @@ RSpec.describe '/api/v1/users/current', type: :view do
   describe 'correct response attributes' do
     subject(:data) { JSON.parse(response)['data'] }
 
-    it { expect(data.keys).to match_array(%w[identity email status profile_image]) }
+    it { expect(data.keys).to match_array(%w[id identity email status profile_image]) }
+    it { expect(data['id']).to eq(user.id) }
     it { expect(data['identity']).to eq(user.identity) }
     it { expect(data['email']).to eq(user.email) }
     it { expect(data['status']).to eq(user.status) }

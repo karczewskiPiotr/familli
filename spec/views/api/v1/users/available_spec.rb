@@ -17,7 +17,7 @@ RSpec.describe '/api/v1/users/available', type: :view do
 
     it 'attributes' do 
       data.each do |user|
-        expect(user.keys).to match_array(%w[identity email status profile_image])
+        expect(user.keys).to match_array(%w[id identity email status profile_image])
       end
     end
   end

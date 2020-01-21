@@ -3,9 +3,10 @@ import Fade from "react-reveal/Fade";
 import Slide from "react-reveal/Slide";
 import ClosePopUp from "../images/close_pop_up.svg";
 
-const PopUp = ({ children, visibility, setVisibility }) => {
+const PopUp = ({ children, visibility, setVisibility, onClose }) => {
   const handleClose = () => {
     setVisibility(false);
+    if (onClose) onClose();
   };
 
   return (

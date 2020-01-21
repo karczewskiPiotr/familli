@@ -67,6 +67,7 @@ const App = () => {
                             isUserOwner={isUserOwner}
                             fetchUserData={fetchUserData}
                             members={members.data}
+                            fetchMembers={fetchMembersData}
                           />
                         )}
                       />

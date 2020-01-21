@@ -11,7 +11,7 @@ class User < ApplicationRecord
   enum status: %i[member owner]
 
   scope :has_no_invitations, -> { left_outer_joins(:invitations).where(invitations: { id: nil }) }
-  scope :has_no_accepted_invitations, -> { left_outer_joins(:invitations).where(invitations: { status: 'pending' }) }
+  scope :has_no_accepted_invitations, -> { left_outer_joins(:invitations).where(invitations: { status: :pending }) }
   scope :not_member_of_familly, -> { has_no_invitations.or(has_no_accepted_invitations) }
 
   def familly
