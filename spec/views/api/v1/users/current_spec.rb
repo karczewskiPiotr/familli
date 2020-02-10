@@ -18,5 +18,6 @@ RSpec.describe '/api/v1/users/current', type: :view do
     it { expect(data['email']).to eq(user.email) }
     it { expect(data['status']).to eq(user.status) }
     it { expect(data['profile_image']).to eq(user.profile_image) }
+    it { expect(data['familly']).to eq(user.familly) }
   end
 end

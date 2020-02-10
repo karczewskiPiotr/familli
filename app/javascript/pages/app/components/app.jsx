@@ -23,6 +23,7 @@ const App = () => {
         email: data.email,
         status: data.status,
         profile_image: data.profile_image,
+        familly: data.familly,
         loading: false
       });
     });
@@ -64,6 +65,7 @@ const App = () => {
                         path="/app"
                         render={() => (
                           <Hub
+                            user={user}
                             isUserOwner={isUserOwner}
                             fetchUserData={fetchUserData}
                             members={members.data}

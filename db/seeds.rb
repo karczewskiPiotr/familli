@@ -33,10 +33,3 @@ User.create([
     password: 'pawlik'
   }
 ])
-
-Invitation.create([
-  {
-    user_id: User.where(identity: 'piotrekkarczewski').first.id,
-    famill
-  }
-])

@@ -8,7 +8,7 @@ import Assistant from "../assistant";
 import AddMember from "./add_member";
 import AddMemberForm from "./add_member_form";
 
-const Hub = ({ isUserOwner, fetchUserData, members, fetchMembers }) => {
+const Hub = ({ user, isUserOwner, fetchUserData, members, fetchMembers }) => {
   const [popUpVisibility, setPopUpVisibility] = useState(false);
 
   const getInitialPopUpMode = () => {
@@ -29,7 +29,7 @@ const Hub = ({ isUserOwner, fetchUserData, members, fetchMembers }) => {
           />
         );
       case "search":
-        return <AddMemberForm />
+        return <AddMemberForm currentUser={user} fetchMembers={fetchMembers} />
     }
   };
 
@@ -45,7 +45,7 @@ const Hub = ({ isUserOwner, fetchUserData, members, fetchMembers }) => {
     <>
       <Tab>
         <Assistant />
-        {members.length < 5 && (
+        {(members.length < 5 && isUserOwner()) && (
           <AddMember setPopUpMode={setPopUpMode} showPopUp={showPopUp} />
         )}
         <Fade top distance="10px" delay={600}>

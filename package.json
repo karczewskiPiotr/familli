@@ -1,5 +1,9 @@
 {
   "name": "familli",
+  "scripts": {
+    "psql": "sudo service postgresql initdb; sudo service postgresql start",
+    "serve": "./bin/webpack-dev-server"
+  },
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.0.0",

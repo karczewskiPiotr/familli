@@ -4,6 +4,6 @@ class Api::V1::UsersController < ApiController
   end
 
   def available
-    @users = User.not_member_of_familly
+    @users = User.not_member_of_familly(current_user.familly.id)
   end
 end
