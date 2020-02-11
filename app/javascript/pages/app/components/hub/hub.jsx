@@ -7,6 +7,7 @@ import AddPaymentForm from "./add_payment_form";
 import Assistant from "../assistant";
 import AddMember from "./add_member";
 import AddMemberForm from "./add_member_form";
+import Member from "./member";
 
 const Hub = ({ user, isUserOwner, fetchUserData, members, fetchMembers }) => {
   const [popUpVisibility, setPopUpVisibility] = useState(false);
@@ -45,6 +46,9 @@ const Hub = ({ user, isUserOwner, fetchUserData, members, fetchMembers }) => {
     <>
       <Tab>
         <Assistant />
+        <div className="members">
+          {members.map(member => <Member key={member.id} member={member} />)}
+        </div>
         {(members.length < 5 && isUserOwner()) && (
           <AddMember setPopUpMode={setPopUpMode} showPopUp={showPopUp} />
         )}
