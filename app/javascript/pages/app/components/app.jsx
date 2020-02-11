@@ -7,11 +7,12 @@ import Hub from "./hub/hub";
 import NoMatch from "./no_match";
 import Navbar from "./navbar";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import MobileOnly from './mobile_only';
 import axios from "axios";
 
 const App = () => {
+  const [width, setWidth] = useState(window.innerWidth)
   const [user, setUser] = useState({ loading: true });
-
   const [members, setMembers] = useState({ data: [], loading: true });
 
   const fetchUserData = () => {
@@ -39,12 +40,26 @@ const App = () => {
 
   useEffect(fetchMembersData, []);
 
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    };
+  }, [])
+
   const isUserOwner = () => {
     if (user.status === "owner") {
       return true;
     }
     return false;
   };
+
+  if (width > 750) return <MobileOnly />
 
   return (
     !user.loading && !members.loading && (
