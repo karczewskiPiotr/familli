@@ -270,7 +270,7 @@ Devise.setup do |config|
   Rails.application.credentials[:spotify][:client_id],
   Rails.application.credentials[:spotify][:client_secret],
   scope: 'user-read-email',
-  callback_url: "http://localhost:3000/users/auth/spotify/callback"
+  callback_url: "/users/auth/spotify/callback"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
