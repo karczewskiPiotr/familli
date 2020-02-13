@@ -261,6 +261,11 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   require 'rspotify/oauth'
+
+  Rails.application.config.to_prepare do
+    OmniAuth::Strategies::Spotify.include SpotifyOmniauthExtension
+  end 
+
   config.omniauth :spotify,
   Rails.application.credentials[:spotify][:client_id],
   Rails.application.credentials[:spotify][:client_secret],

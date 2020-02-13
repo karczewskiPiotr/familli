@@ -1,0 +1,81 @@
+.pop-up-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1002;
+  background-color: rgba(30, 30, 30, 0.78);
+  .pop-up {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px;
+    height: fit-content;
+    .close-btn-wrapper {
+      width: 100%;
+      text-align: right;
+      padding: 10px 10px 0px 0px;
+      .close-btn {
+        padding: 0;
+        background: transparent;
+        outline: none;
+        border: none;
+      }
+    }
+    .form-wrapper {
+      text-align: center;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .form {
+        text-align: left;
+        padding-left: 20px;
+        padding-right: 20px;
+        .label {
+          font-weight: bold;
+          margin-bottom: 5px;
+          margin-top: 15px;
+        }
+        .input-field {
+          width: 100%;
+          background-color: rgba(196, 196, 196, 0.41);
+          border: none;
+          border-radius: 25px;
+          outline: none;
+          padding-left: 10px;
+        }
+        .input-error {
+          color: red;
+        }
+      }
+      .create-btn-wrapper {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 25px;
+        .create-btn {
+          &:disabled {
+            background-color: rgba(196, 196, 196, 0.41);
+            color: grey;
+          }
+          outline: none;
+          border: none;
+          min-width: 300px;
+          color: white;
+          background-color: $spotify-green;
+          border-radius: 25px;
+          font-size: 16px;
+          font-weight: 600;
+          padding: 5px;
+          -webkit-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+          -moz-box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+          box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.55);
+        }
+      }
+    }
+  }
+}

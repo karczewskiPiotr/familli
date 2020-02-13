@@ -10,8 +10,14 @@ class User < ApplicationRecord
 
   enum status: %i[member owner]
 
+  scope :has_no_invitations, -> { left_outer_joins(:invitations).where(invitations: { id: nil }) }
+  scope :has_no_accepted_invitations, ->(familly_id) {
+    left_outer_joins(:invitations).where(['invitations.status = 0 and invitations.familly_id != ?', familly_id])
+  }
+  scope :not_member_of_familly, ->(familly_id) { has_no_invitations.or(has_no_accepted_invitations(familly_id)) }
+
   def familly
-    Invitation.where(status: :accepted, user_id: id).first.familly
+    Invitation.where(status: :accepted, user_id: id).first&.familly
   end
 
   # :nocov:

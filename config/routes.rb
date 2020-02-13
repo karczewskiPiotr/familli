@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: 'json' } do
     namespace :v1 do
      get 'users/current', to: 'users#current'
+     get 'users/available', to: 'users#available'
+     resources :famillies, only: :create do
+      collection do
+        get '/members', to: 'famillies#members'
+      end
+     end
+     resources :invitations, only: [:create, :destroy]
     end
   end
   
