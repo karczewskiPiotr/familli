@@ -47,7 +47,7 @@ const Hub = ({ user, isUserOwner, fetchUserData, members, fetchMembers }) => {
       <Tab>
         <Assistant />
         <div className="members">
-          {members.map(member => <Member key={member.id} member={member} />)}
+          {members.map(member => <Member key={member.id} member={member} fetchMembers={fetchMembers} />)}
         </div>
         {(members.length < 5 && isUserOwner()) && (
           <AddMember setPopUpMode={setPopUpMode} showPopUp={showPopUp} />

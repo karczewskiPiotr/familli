@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         get '/members', to: 'famillies#members'
       end
      end
-     resources :invitations, only: :create
+     resources :invitations, only: [:create, :destroy]
     end
   end
   

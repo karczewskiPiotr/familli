@@ -4,6 +4,11 @@ class Api::V1::InvitationsController < ApiController
     return unless invitation.save
   end
 
+  def destroy
+    invitation = Invitation.find(params[:id])
+    invitation.destroy
+  end
+
   private
 
   def invitation_params
