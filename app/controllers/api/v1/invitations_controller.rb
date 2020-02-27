@@ -9,6 +9,10 @@ class Api::V1::InvitationsController < ApiController
     invitation.destroy
   end
 
+  def index
+    @invitations = current_user.invitations.includes(:user, :familly)
+  end
+
   private
 
   def invitation_params
