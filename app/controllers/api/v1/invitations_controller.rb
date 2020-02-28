@@ -10,7 +10,7 @@ class Api::V1::InvitationsController < ApiController
   end
 
   def index
-    @invitations = current_user.invitations.includes(:user, :familly)
+    @invitations = current_user.owner? ? [] : current_user.invitations.includes(:user, :familly)
   end
 
   private
