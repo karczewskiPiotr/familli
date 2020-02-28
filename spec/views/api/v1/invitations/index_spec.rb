@@ -11,11 +11,11 @@ RSpec.describe '/api/v1/invitations/index', type: :view do
     user.owner!
     Invitation.create(user_id: user2.id, familly_id: user.famillies.first.id)
   end
-  
+
   describe 'correct response' do
     subject(:data) { JSON.parse(response)['data'] }
-    
-    context 'member' do
+
+    context 'when member' do
       before do
         sign_in(user2)
         @invitations = user2.invitations.includes(:user, :familly)
@@ -23,17 +23,15 @@ RSpec.describe '/api/v1/invitations/index', type: :view do
       end
 
       it { expect(data.length).to eq(user2.invitations.count) }
-      
+
       it 'attributes' do
         data.each do |invitation|
           expect(invitation.keys).to match_array(%w[id status created_at familly])
-          expect(invitation['familly'].keys).to match_array(%w[id subscription_fee renewal_date currency owner])
-          expect(invitation['familly']['owner'].keys).to match_array(%w[id identity status email profile_image])
         end
       end
     end
 
-    context 'owner' do
+    context 'when owner' do
       before do
         sign_in(user)
         @invitations = []
