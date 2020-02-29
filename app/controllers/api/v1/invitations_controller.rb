@@ -13,6 +13,16 @@ class Api::V1::InvitationsController < ApiController
     @invitations = current_user.owner? ? [] : current_user.invitations.includes(:user, :familly)
   end
 
+  def accept
+    invitation = Invitation.find(params[:id])
+    invitation&.accepted!
+  end
+
+  def decline
+    invitation = Invitation.find(params[:id])
+    invitation&.declined!
+  end
+
   private
 
   def invitation_params

@@ -14,7 +14,12 @@ Rails.application.routes.draw do
         get '/members', to: 'famillies#members'
       end
      end
-     resources :invitations, only: [:create, :destroy, :index]
+     resources :invitations, only: [:create, :destroy, :index] do
+      member do
+        patch 'accept', to: 'invitations#accept'
+        patch 'decline', to: 'invitations#decline'
+      end
+     end
     end
   end
   

@@ -41,4 +41,44 @@ RSpec.describe Api::V1::InvitationsController, type: :controller do
       it { expect { api_call }.to change(Invitation, :count).by(-1) }
     end
   end
+
+  describe 'PATCH #accept' do
+    before do
+      sign_in(user)
+      user.famillies.create(attributes_for(:familly))
+      Invitation.create(user_id: user.id, familly_id: user.famillies.first.id, status: :accepted)
+      Invitation.create(user_id: user2.id, familly_id: user.famillies.first.id)
+    end
+
+    let(:valid_attributes) { { id: user2.invitations.last.id } }
+
+    context 'with valid attributes' do
+      subject(:api_call) { patch :accept, params: valid_attributes }
+
+      it 'changes invitation status to accepted' do
+        api_call
+        expect(user2.invitations.last.status).to eq 'accepted'
+      end
+    end
+  end
+
+  describe 'PATCH #decline' do
+    before do
+      sign_in(user)
+      user.famillies.create(attributes_for(:familly))
+      Invitation.create(user_id: user.id, familly_id: user.famillies.first.id, status: :accepted)
+      Invitation.create(user_id: user2.id, familly_id: user.famillies.first.id)
+    end
+
+    let(:valid_attributes) { { id: user2.invitations.last.id } }
+
+    context 'with valid attributes' do
+      subject(:api_call) { patch :decline, params: valid_attributes }
+
+      it 'changes invitation status to accepted' do
+        api_call
+        expect(user2.invitations.last.status).to eq 'declined'
+      end
+    end
+  end
 end
