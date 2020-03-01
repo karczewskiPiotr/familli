@@ -12,7 +12,7 @@ RSpec.describe '/api/v1/users/current', type: :view do
   describe 'correct response attributes' do
     subject(:data) { JSON.parse(response)['data'] }
 
-    it { expect(data.keys).to match_array(%w[id identity email status profile_image]) }
+    it { expect(data.keys).to match_array(%w[id identity email status profile_image familly]) }
     it { expect(data['id']).to eq(user.id) }
     it { expect(data['identity']).to eq(user.identity) }
     it { expect(data['email']).to eq(user.email) }

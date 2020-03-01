@@ -75,10 +75,7 @@ RSpec.describe Api::V1::InvitationsController, type: :controller do
     context 'with valid attributes' do
       subject(:api_call) { patch :decline, params: valid_attributes }
 
-      it 'changes invitation status to accepted' do
-        api_call
-        expect(user2.invitations.last.status).to eq 'declined'
-      end
+      it { expect { api_call }.to change(Invitation, :count).by(-1) }
     end
   end
 
