@@ -8,6 +8,7 @@ import Assistant from "../assistant";
 import AddMember from "./add_member";
 import AddMemberForm from "./add_member_form";
 import Member from "./member";
+import Invitations from './invitations';
 
 const Hub = ({ user, isUserOwner, fetchUserData, members, fetchMembers }) => {
   const [popUpVisibility, setPopUpVisibility] = useState(false);
@@ -15,6 +16,16 @@ const Hub = ({ user, isUserOwner, fetchUserData, members, fetchMembers }) => {
   const getInitialPopUpMode = () => {
     return isUserOwner() ? "payment" : "familly";
   };
+
+  const isMemberOfFamilly = () => {
+    if (isUserOwner()) {
+      return true;
+    } else if (user.familly) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   const [popUpMode, setPopUpMode] = useState(getInitialPopUpMode());
 
@@ -47,18 +58,23 @@ const Hub = ({ user, isUserOwner, fetchUserData, members, fetchMembers }) => {
       <Tab>
         <Assistant />
         <div className="members">
-          {members.map(member => <Member key={member.id} member={member} fetchMembers={fetchMembers} />)}
+          {members.map(member => <Member key={member.id} member={member} fetchMembers={fetchMembers} deleteVisibility={isUserOwner()} />)}
         </div>
-        {(members.length < 5 && isUserOwner()) && (
+        {(isUserOwner() && members.length < 5) && (
           <AddMember setPopUpMode={setPopUpMode} showPopUp={showPopUp} />
         )}
-        <Fade top distance="10px" delay={600}>
-          <div className="action-btn-wrapper">
-            <button className="action-btn" onClick={showPopUp}>
-              {isUserOwner() ? "Add payment" : "Start a familly"}
-            </button>
-          </div>
-        </Fade>
+        {(!isUserOwner() && isMemberOfFamilly()) && (
+          <Invitations user={user} fetchUserData={fetchUserData} fetchMembers={fetchMembers} />
+        )}
+        {isMemberOfFamilly() &&
+          <Fade top distance="10px" delay={600}>
+            <div className="action-btn-wrapper">
+              <button className="action-btn" onClick={showPopUp}>
+                {isUserOwner() ? "Add payment" : "Start a familly"}
+              </button>
+            </div>
+          </Fade>
+        }
       </Tab>
       <PopUp
         visibility={popUpVisibility}

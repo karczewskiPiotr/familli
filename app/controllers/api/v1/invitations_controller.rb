@@ -10,17 +10,19 @@ class Api::V1::InvitationsController < ApiController
   end
 
   def index
-    @invitations = current_user.owner? ? [] : current_user.invitations.includes(:user, :familly)
+    @invitations = current_user.owner? ? [] : current_user.invitations.where(status: :pending).includes(:user, :familly)
   end
 
   def accept
     invitation = Invitation.find(params[:id])
     invitation&.accepted!
+    Invitation.where(user_id: current_user.id).where.not(id: params[:id]).destroy_all
   end
 
   def decline
     invitation = Invitation.find(params[:id])
     invitation&.declined!
+    invitation.destroy
   end
 
   private
