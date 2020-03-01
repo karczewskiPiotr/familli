@@ -81,4 +81,25 @@ RSpec.describe Api::V1::InvitationsController, type: :controller do
       end
     end
   end
+
+  describe 'GET #index' do
+    subject(:api_call) { get :index, format: :json }
+
+    let!(:user) { create(:user) }
+    let!(:user2) { create(:user) }
+
+    before do
+      familly = user.famillies.build(attributes_for(:familly))
+      familly.save
+      Invitation.create(user_id: user.id, familly_id: familly.id, status: :accepted)
+      user.owner!
+      Invitation.create(user_id: user2.id, familly_id: user.famillies.first.id)
+      sign_in(user2)
+    end
+
+    it 'returns success status' do
+      api_call
+      expect(response).to be_successful
+    end
+  end
 end
